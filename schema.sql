@@ -9,4 +9,3 @@ CREATE TABLE animals (
     weight_kg DECIMAL,
     species text
 );
-
