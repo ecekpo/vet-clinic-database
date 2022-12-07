@@ -29,18 +29,17 @@ SELECT * FROM animals WHERE NOT name='Gabumon';
 //Find all animals with a weight between 10.4kg and 17.3kg (including the animals with the weights that equals precisely 10.4kg or 17.3kg)
 SELECT * FROM animals WHERE (weight_kg BETWEEN 10.4 and 17.3 AND weight_kg =10.4 OR weight_kg= 17.3);
 
+BEGIN TRANSACTION;
 
 DELETE FROM animals WHERE date_of_birth > '2022-01-01';
 
 SAVEPOINT SPA1;
 
-ROLLBACK TO SPA1;
-
 UPDATE animals SET weight_kg=weight_kg * -1;
 
-UPDATE animals SET weight_kg=weight_kg * -1 WHERE weight_kg<0;
+ROLLBACK TO SPA1;
 
-BEGIN TRANSACTION;
+UPDATE animals SET weight_kg=weight_kg * -1 WHERE weight_kg<0;
 
 COMMIT;
 
