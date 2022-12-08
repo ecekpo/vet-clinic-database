@@ -9,3 +9,19 @@ CREATE TABLE animals (
     weight_kg DECIMAL,
     species text
 );
+
+
+
+//Creating a table named owners
+CREATE TABLE Owners (
+    id serial PRIMARY KEY,
+    full_name varchar(255) NOT NULL,
+    age INTEGER
+);
+
+// Creating a table named species
+CREATE TABLE Species (
+    id serial PRIMARY KEY,
+    name varchar(255) NOT NULL
+);
+
