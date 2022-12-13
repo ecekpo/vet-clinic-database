@@ -47,3 +47,25 @@ CREATE TABLE invoice_items (
     FOREIGN KEY(id) REFERENCES invoice_id(id)
     FOREIGN KEY(id) REFERENCES treatments(id)
 );
+
+CREATE TABLE treatment_histories (
+  id SERIAL NOT NULL,
+  medical_history_id INT,
+  treatment_id INT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id),
+  FOREIGN KEY (treatment_id) REFERENCES treatments(id)
+);
+
+--- Create FK INdexes
+CREATE INDEX ON medical_histories(patient_id);
+
+CREATE INDEX ON invoices(medical_history_id);
+
+CREATE INDEX ON invoice_items(invoice_id);
+
+CREATE INDEX ON invoice_items(treatment_id);
+
+CREATE INDEX ON treatment_histories(medical_history_id);
+
+CREATE INDEX ON treatment_histories(treatment_id);
